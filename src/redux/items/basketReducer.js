@@ -6,18 +6,23 @@ const basketInitialState = {
 export const basketReducer = (state = basketInitialState, action) => {
     switch (action.type) {
         case ADD_ITEM_TO_BASKET:
-            const item = state.items.filter((i) => {
-                return i.name === action.payload;
-            });
-            console.log(item);
-            if (item.length !== 0) {
-                return {
-                    items: [...state.items, { ...item, qty: item.qty + 1 }]
-                };
+            // const item = state.items.filter((i) => {
+            //     return i.name === action.payload;
+            // });
+            const itemIndex = state.items.findIndex(i => i.name === action.payload)
+            const newItems = state.items
+
+            if (itemIndex != -1) {
+                const item = newItems[itemIndex]
+                console.log(item);
+                newItems[itemIndex] = item
             } else {
-                return {
-                    items: [...state.items, { name: action.payload, id: action.payload, qty: 1, checked: false }]
-                };
+                newItems.push({ name: action.payload, qty: 1, checked: false })
+            }
+            
+            return {
+                ...state,
+                items: newItems
             }
         case CHECKMARK_ITEM:
             return {
