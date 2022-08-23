@@ -14,7 +14,6 @@ export const basketReducer = (state = basketInitialState, action) => {
 
             if (itemIndex != -1) {
                 const item = newItems[itemIndex]
-                console.log(item);
                 newItems[itemIndex] = item
             } else {
                 newItems.push({ name: action.payload, qty: 1, checked: false })
