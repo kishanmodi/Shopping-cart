@@ -26,11 +26,11 @@ export const basketReducer = (state = basketInitialState, action) => {
         case CHECKMARK_ITEM:
             return {
                 ...state,
-
-                item: { ...item, checked: !item.checked }
+                items: { ...item, checked: !item.checked }
             };
         case CLEAR_BASKET:
             return {
+                ...state,
                 items: []
             };
         default:
