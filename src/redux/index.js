@@ -1,3 +1,3 @@
 export { groceryReducer } from './grocery/groceryReducer';
-export { basketReducer } from './items/basketReducer';
+export { basketReducer } from './basket/basketReducer';
 export { store } from './store';
